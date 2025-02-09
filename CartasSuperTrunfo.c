@@ -1,22 +1,46 @@
 #include <stdio.h>
+#include <string.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+// Definindo a estrutura para representar uma carta de cidade
+struct CartaCidade {
+    char estado[3];               // Estado, com 2 caracteres e o terminador de string '\0'
+    char codigo[5];               // Código da carta, 4 caracteres + o terminador
+    char cidade[50];              // Nome da cidade
+    unsigned long int populacao;  // População da cidade (usando unsigned long int)
+    float area;                   // Área da cidade (km²)
+    float pib;                    // PIB da cidade (em bilhões)
+    int pontosTuristicos;         // Número de pontos turísticos
+    float densidadePopulacional;  // Densidade populacional (população / área)
+    float pibPerCapita;           // PIB per capita (PIB / população)
+    float superPoder;             // Super Poder da carta, que é a soma de todas as propriedades
+};
 
-int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+// Função para cadastrar uma carta
+void cadastrarCarta(struct CartaCidade* carta) {
+    // Solicitar o estado
+    printf("Digite o estado: ");
+    scanf(" %2s", carta->estado);  // Ler 2 caracteres para o estado
 
-    return 0;
-}
+    // Solicitar o código da carta
+    printf("Digite o código da carta (exemplo: A01, B02): ");
+    scanf(" %4s", carta->codigo);  // Ler até 4 caracteres para o código
+
+    // Solicitar o nome da cidade
+    printf("Digite o nome da cidade: ");
+    scanf(" %49[^\n]", carta->cidade); // Ler o nome da cidade com espaços
+
+    // Solicitar a população
+    printf("Digite a população da cidade: ");
+    scanf("%lu", &carta->populacao);  // Usar unsigned long int para população
+
+    // Solicitar a área da cidade
+    printf("Digite a área da cidade (km²): ");
+    scanf("%f", &carta->area);
+
+    // Solicitar o PIB da cidade
+    printf("Digite o PIB da cidade (em bilhões): ");
+    scanf("%f", &carta->pib);
+
+    // Solicitar o número de pontos turísticos
+    printf("Digite o número de pontos turísticos: ");
+    scanf("%d", 
